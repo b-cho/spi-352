@@ -71,7 +71,7 @@ class ClaudeAgent(Agent):
             system=self.system_prompt,
             messages=messages,
         )
-        time.sleep(0.2)
+        time.sleep(0.2) 
 
         # Extract text content from the response
         return response.content[0].text
