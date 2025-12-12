@@ -28,7 +28,10 @@ Please respond in the following format.
 
 <group_chat> [name of group chat] </group_chat>
 <message> [your message content] </message>
-<next_speaker> [name of next speaker] </next_speaker>'''
+<next_speaker> [name of next speaker] </next_speaker>
+
+When selecting the next speaker, only include the name of the next speaker in the <next_speaker> tags and nothing else.
+'''
 
         # we now construct a prompt containing all of the chat histories
         chat_history_prompt = '''Below are the list of conversations you have access to.'''
@@ -63,18 +66,18 @@ Please respond in the following format.
             'raw_response': response_text
         }
 
-        print('='*25)
-        print('NAME:', self.agent_name)
-        # print('SYSTEM PROMPT:', self.system_prompt)
-        # print('PROMPT:', prompt)
-        # print('\n\n')
-        print(response_text)
-        print({
-            'chat_name': chat_name,
-            'content': content,
-            'next_speaker': next_speaker
-        })
-        print('='*25)
+        # print('='*25)
+        # print('NAME:', self.agent_name)
+        # # print('SYSTEM PROMPT:', self.system_prompt)
+        # # print('PROMPT:', prompt)
+        # # print('\n\n')
+        # print(response_text)
+        # print({
+        #     'chat_name': chat_name,
+        #     'content': content,
+        #     'next_speaker': next_speaker
+        # })
+        # print('='*25)
 
         for chat in self.chats:
             if chat.chat_name == chat_name:
