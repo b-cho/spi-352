@@ -8,8 +8,11 @@ class Game():
         self.log_dir = log_dir
         self.history = []
     
-    def is_game_over(self, response):
+    def is_game_over(self, response_dict):
         return False
+
+    def parse(self, response_text):
+        return {}
 
     def run(self, max_iterations=20): 
         # begin with the first agent in the agents list
@@ -21,9 +24,11 @@ class Game():
             response_dict['turn'] = it
             response_dict['sender'] = self.agents[next_index].agent_name
 
+            response_dict = response_dict | self.parse(response_dict['raw_response'])
+
             self.history.append(response_dict)
 
-            if self.is_game_over(response_dict['raw_response']):
+            if self.is_game_over(response_dict):
                 return self.history
             
             next_index = next((index for index, agent in enumerate(self.agents) if agent.agent_name == next_agent), None)
